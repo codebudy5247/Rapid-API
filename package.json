@@ -4,8 +4,8 @@
 	"description": "Backend for Contact Keeper app",
 	"main": "server.js",
 	"scripts": {
-		"start": "node start.js",
-		"server": "nodemon start.js"
+		"start": "node server.js",
+		"server": "nodemon server.js"
 		
 	},
 	
