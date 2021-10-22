@@ -55,12 +55,10 @@ router.put('/:id', async (req, res) => {
 
 
 	const { name, email,avatar, phone, type } = req.body;
-
-	// Build contact object
 	const contactFields = {};
 	if (name) contactFields.name = name;
 	if (email) contactFields.email = email;
-  if (avatar) contactFields.avatar = avatar;
+        if (avatar) contactFields.avatar = avatar;
 	if (phone) contactFields.phone = phone;
 	if (type) contactFields.type = type;
 
