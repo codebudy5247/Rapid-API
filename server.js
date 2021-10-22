@@ -13,8 +13,8 @@ connectDB();
 app.use(express.json({ extended: false }));
 app.use(cors());
 //Test Routes
-app.get("/test", async (req, res) => {
-  res.json({ message: "pass!" });
+app.get("/", async (req, res) => {
+  res.json({ message: "APIs running!" });
 });
 
 // Define Routes
