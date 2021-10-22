@@ -28,6 +28,17 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/:id",async(req,res)=>{
+ const contact = await Contact.findById(req.params.id)
+
+  if (contact) {
+    res.json(contact)
+  } else {
+    res.status(404)
+  }
+
+})
+
 // POST api/contacts
 router.post("/", async (req, res) => {
   const { name, email, avatar, phone, type } = req.body;
