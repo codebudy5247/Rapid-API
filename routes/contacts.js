@@ -51,7 +51,7 @@ router.post("/", async (req, res) => {
 });
 
 //UPDATE /api/contacts
-router.put('/:id', auth, async (req, res) => {
+router.put('/:id', async (req, res) => {
 
 
 	const { name, email,avatar, phone, type } = req.body;
@@ -69,9 +69,6 @@ router.put('/:id', auth, async (req, res) => {
 
 		if (!contact) return res.status(404).json({ msg: 'Contact not found' });
 
-		// Make sure user owns contact
-		if (contact.user.toString() !== req.user.id)
-			return res.status(401).json({ msg: 'Not authorized' });
 
 		contact = await Contact.findByIdAndUpdate(
 			req.params.id,
@@ -92,10 +89,6 @@ router.delete('/:id', auth, async (req, res) => {
 		const contact = await Contact.findById(req.params.id);
 
 		if (!contact) return res.status(404).json({ msg: 'Contact not found' });
-
-		// Make sure user owns contact
-		if (contact.user.toString() !== req.user.id)
-			return res.status(401).json({ msg: 'Not authorized' });
 
 		await Contact.findByIdAndRemove(req.params.id);
 
